@@ -13,9 +13,9 @@ Este projeto utiliza o Cypress para automação de testes. Siga o passo a passo 
    https://github.com/reispablo/serverest.git
 
 2. Instale as dependências necessárias:
-   npm install cypress
-   npm install dotenv --save-dev
-   npm install --save-dev cypress-file-upload
+  - npm install cypress
+  - npm install dotenv --save-dev
+  - npm install --save-dev cypress-file-upload
 
 ## Executando os Testes
 
