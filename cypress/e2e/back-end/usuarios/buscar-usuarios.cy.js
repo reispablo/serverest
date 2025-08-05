@@ -1,7 +1,11 @@
 /// <reference types="cypress"/>
+import { gerarNomeAleatorio, gerarEmailAleatorio } from '../../../support/functions'
+const nomeAleatorio = gerarNomeAleatorio()
+const emailAleatorio = gerarEmailAleatorio()
 
 describe('Buscar Usuarios', () => {
-    let token;
+    let token
+    let idUsuario
 
     before(() => {
         cy.login_admin_backend().then(tkn => { token = tkn })
@@ -53,16 +57,36 @@ describe('Buscar Usuarios', () => {
         })
     })
 
+    it('cadastrar usuarios', () => {
+        cy.request({
+            url: '/usuarios',
+            method: 'POST',
+            headers: { Authorization: `Bearer ${token}` },
+            body: {
+                "nome": nomeAleatorio,
+                "email": 'meu'+emailAleatorio,
+                "password": "123456",
+                "administrador": "false"
+            }
+        }).as('response')
+        cy.get('@response').then((res) => {
+            expect(res.status).to.eq(201)
+            expect(res.body.message).to.eq('Cadastro realizado com sucesso')
+            idUsuario = res.body._id
+            cy.log(`Usuario = ${idUsuario}`)
+        })
+    })
+
     it('deve buscar usuário pelo id', () => {
         cy.request({
-            url: '/usuarios/JhEY5vwVphxk2t0T',
+            url: '/usuarios/'+idUsuario,
             method: 'GET',
             headers: { Authorization: `Bearer ${token}` }
         }).then((res) => {
             expect(res.status).to.eq(200)
             expect(res.body).to.have.property('nome')
             expect(res.body).to.have.property('email')
-            expect(res.body._id).to.eq('JhEY5vwVphxk2t0T')
+            expect(res.body._id).to.eq(idUsuario)
         })
     })
 })
