@@ -1,0 +1,20 @@
+{
+  "name": "serverest",
+  "version": "1.0.0",
+  "description": "repo referente a testes automatizados cypress para o ambiente serverest",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "open": "cypress open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^14.5.3"
+  },
+  "devDependencies": {
+    "cypress-file-upload": "^5.0.8",
+    "dotenv": "^17.2.1"
+  }
+}
