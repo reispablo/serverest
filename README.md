@@ -46,5 +46,9 @@ A pipeline será executada em servidores do GitHub e você poderá acompanhar os
 ## Observações
 
 - Certifique-se de configurar corretamente as variáveis de ambiente no arquivo `.env`, se necessário.
+- se necessário alterar login e senha no arquivo `.env`. 
+
+"email": "reispablo87@gmail.com",
+"senha": "123456",
   
 ---
